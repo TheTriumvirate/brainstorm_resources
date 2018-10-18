@@ -2,5 +2,9 @@
 name = "resources"
 version = "0.1.0"
 authors = ["theAzack9 <robin@cavachi.be>"]
+publish = false
 
 [dependencies]
+
+[profile.dev]
+codegen-units = 5
