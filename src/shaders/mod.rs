@@ -9,3 +9,6 @@ pub const TEXT_FRAGMENT_SHADER: &[u8] = include_bytes!("text.frag");
 
 pub const OBJ_VERTEX_SHADER: &[u8] = include_bytes!("obj.vert");
 pub const OBJ_FRAGMENT_SHADER: &[u8] = include_bytes!("obj.frag");
+
+pub const STREAMLINES_VERTEX_SHADER: &[u8] = include_bytes!("streamlines.vert");
+pub const STREAMLINES_FRAGMENT_SHADER: &[u8] = include_bytes!("streamlines.frag");

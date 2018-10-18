@@ -1,7 +1,6 @@
 #version 100
 
 precision mediump float;
-varying float lifetime;
 varying float t;
 uniform float transparency;
 
