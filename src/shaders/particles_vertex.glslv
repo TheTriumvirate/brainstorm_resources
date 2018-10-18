@@ -10,10 +10,11 @@ varying float t;
 uniform mat4 MVP;
 uniform float max_dist;
 uniform float min_dist;
+uniform float part_size;
 
 void main() {
     gl_Position = MVP * vec4(position.xyz, 1.0);
-    gl_PointSize = 8.0 / length(gl_Position);
+    gl_PointSize = part_size / length(gl_Position);
     lifetime = position.a;
     
     float dist = length(gl_Position.xyz);
