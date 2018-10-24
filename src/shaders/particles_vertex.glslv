@@ -16,5 +16,5 @@ void main() {
     gl_PointSize = part_size / length(gl_Position);
     
     float dist = length(gl_Position.xyz);
-    t = (dist - min_dist) / (max_dist - min_dist); 
+    t = 1.0 - (dist - min_dist) / (max_dist - min_dist); 
 }
