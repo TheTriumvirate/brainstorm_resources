@@ -32,7 +32,7 @@ void main() {
     float lower = u_speed * u_lowpass;
 
     float moved = length(delta.xyz * u_speed);
-    if(moved >= upper || moved <= lower) {
+    if(moved > lower || moved < upper + 0.001) {
         vec4 spawn_noise = texture(uNoise, v_texpos);
         
         vec3 dir = (spawn_noise.xyz - u_seedpos);
@@ -41,7 +41,7 @@ void main() {
         vec4 delta = texture(uData, color.xyz) * 2.0 - 1.0;
 
         float deltaf = length(delta.xyz * u_speed);
-        if(deltaf >= upper || deltaf <= lower) {
+        if(deltaf > lower || deltaf < upper + 0.001) {
             color = vec4(0.0, 0.0, 0.0, 1.0);
         }
     }
