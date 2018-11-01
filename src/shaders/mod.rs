@@ -15,3 +15,6 @@ pub const STREAMLINES_FRAGMENT_SHADER: &[u8] = include_bytes!("streamlines.frag"
 
 pub const GPU_PARTICLES_VERTEX_SHADER: &[u8] = include_bytes!("gpu_particles.vert");
 pub const GPU_PARTICLES_FRAGMENT_SHADER: &[u8] = include_bytes!("gpu_particles.frag");
+
+pub const GPU_PARTICLES_UPDATE_VERTEX_SHADER: &[u8] = include_bytes!("gpu_updater.vert");
+pub const GPU_PARTICLES_UPDATE_FRAGMENT_SHADER: &[u8] = include_bytes!("gpu_updater.frag");
