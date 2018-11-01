@@ -25,7 +25,7 @@ const float reset_threshold = 0.0004;
 void main() {
     gl_Position = vec4(v_texpos * 2.0 - 1.0, 0.0, 1.0);
     vec4 data = texelFetch(uSampler, ivec3(ivec2(v_texpos * u_size), u_layer), 0);
-    vec4 delta = texture(uData, data.xyz) * 2.0 - 1.0;
+    vec4 delta = texture(uData, data.zyx) * 2.0 - 1.0;
     color = vec4(data.xyz + (delta.xyz * u_speed), 1.0);
 
     float upper = u_speed * u_highpass;
@@ -38,7 +38,7 @@ void main() {
         vec3 dir = (spawn_noise.xyz - u_seedpos);
         dir = dir / length(dir);
         color = vec4(dir * spawn_noise.w * u_seedsize + u_seedpos, 1.0);
-        vec4 delta = texture(uData, color.xyz) * 2.0 - 1.0;
+        vec4 delta = texture(uData, color.zyx) * 2.0 - 1.0;
 
         float deltaf = length(delta.xyz * u_speed);
         if(deltaf > lower || deltaf < upper + 0.001) {
