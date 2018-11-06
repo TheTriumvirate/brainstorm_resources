@@ -1,10 +1,13 @@
 #version 300 es
 
 precision highp float;
+precision highp sampler3D;
+precision highp sampler2DArray;
 
 in vec2 v_texpos;
 
-uniform sampler3D uSampler;
+
+uniform sampler2DArray uSampler;
 uniform sampler3D uData;
 
 uniform sampler2D uNoise;
@@ -18,12 +21,14 @@ uniform float u_speed;
 uniform vec3 u_seedpos;
 uniform float u_seedsize;
 
+uniform mat4 MVP;
+
 out vec4 color;
 
 const float reset_threshold = 0.0004;
 
 void main() {
-    gl_Position = vec4(v_texpos * 2.0 - 1.0, 0.0, 1.0);
+    gl_Position = MVP * vec4(v_texpos * 2.0 - 1.0, 0.0, 1.0);
     vec4 data = texelFetch(uSampler, ivec3(ivec2(v_texpos * u_size), u_layer), 0);
     vec4 delta = texture(uData, data.zyx) * 2.0 - 1.0;
     color = vec4(data.xyz + (delta.xyz * u_speed), 1.0);

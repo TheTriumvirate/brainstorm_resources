@@ -1,12 +1,12 @@
 #version 300 es
 
 precision highp float;
-precision highp sampler3D;
+precision highp sampler2DArray;
 
 in vec2 v_texpos;
 
 uniform mat4 MVP;
-uniform sampler3D uSampler;
+uniform sampler2DArray uSampler;
 uniform float u_size;
 uniform int u_layer;
 
