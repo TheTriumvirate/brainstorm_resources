@@ -14,14 +14,17 @@ out vec4 color;
 out float invalid;
 out float transparency;
 
+const int STREAMLINES = 4;
+
 void main() {
     int offset = gl_VertexID / int(u_size * u_size);
-    int layer = (u_layer - offset + 8) % 8;
+    int layer = (u_layer - offset + STREAMLINES) % STREAMLINES;
     color = texelFetch(uSampler, ivec3(ivec2(v_texpos * u_size), layer), 0);
     invalid = 0.0;
     if(color.rgb == vec3(0.0, 0.0, 0.0))
         invalid = 1.0;
+    //vec3 color = vec3(color.x, color.y, 1.0 - color.z);
     gl_Position = MVP * vec4(color.xyz - 0.5, 1.0);
     gl_PointSize = 4.0 / length(gl_Position);
-    transparency = 1.0 - float(offset) / 8.0;
+    transparency = 1.0 - float(offset) / float(STREAMLINES);
 }
