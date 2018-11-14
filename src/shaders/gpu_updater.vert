@@ -57,7 +57,7 @@ void main() {
     }
 
     vec4 delta = texture(uData, data.zyx) * 2.0 - 1.0;
-    color = vec3(data.xyz + (delta.xyz * u_speed));
+    color = (MVP * vec4(data.xyz + (delta.xyz * u_speed), 1.0)).xyz;
 
     float moved = pyth(delta.xyz * u_speed);
     color *= step(upper, moved) * (1.0 - step(lower, moved));

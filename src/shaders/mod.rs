@@ -18,3 +18,6 @@ pub const GPU_PARTICLES_FRAGMENT_SHADER: &[u8] = include_bytes!("gpu_particles.f
 
 pub const GPU_PARTICLES_UPDATE_VERTEX_SHADER: &[u8] = include_bytes!("gpu_updater.vert");
 pub const GPU_PARTICLES_UPDATE_FRAGMENT_SHADER: &[u8] = include_bytes!("gpu_updater.frag");
+
+pub const TEST_VERTEX_SHADER: &[u8] = include_bytes!("test.vert");
+pub const TEST_FRAGMENT_SHADER: &[u8] = include_bytes!("test.frag");
