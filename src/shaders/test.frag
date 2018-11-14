@@ -12,5 +12,5 @@ uniform int u_layer;
 out vec4 color;
 
 void main(void) {
-    color = texelFetch(uSampler, ivec3(ivec2(v_texture * 512.0), u_layer), 0) + vec4(v_color, 1.0);
+    color = texelFetch(uSampler, ivec3(ivec2(v_texture * 512.0), u_layer), 0);
 }
