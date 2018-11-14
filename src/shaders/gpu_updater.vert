@@ -48,7 +48,7 @@ void main() {
         dir = dir / length(dir);
         color = vec3(dir * spawn_noise.w * u_seedsize + u_seedpos);
         color = clamp(color, 0.0, 1.0);
-        vec4 delta = texture(uData, vec3(1.0 - color.z, color.y, color.x));
+        vec4 delta = texture(uData, color.xyz);
         delta.xyz = (delta.xyz * 2.0 - 1.0) * delta.a;
 
         float deltaf = pyth(delta.xyz * u_speed);
@@ -56,7 +56,7 @@ void main() {
         return;
     }
 
-    vec4 delta = texture(uData, vec3(1.0 - data.z, data.y, data.x));
+    vec4 delta = texture(uData, data.xyz);
     delta.xyz = (delta.xyz * 2.0 - 1.0) * delta.a;
     color = data.xyz + (delta.xyz * u_speed);
 
