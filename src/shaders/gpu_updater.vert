@@ -48,14 +48,16 @@ void main() {
         dir = dir / length(dir);
         color = vec3(dir * spawn_noise.w * u_seedsize + u_seedpos);
         color = clamp(color, 0.0, 1.0);
-        vec4 delta = texture(uData, color.zyx) * 2.0 - 1.0;
+        vec4 delta = texture(uData, color.zyx);
+        delta.xyz = (delta.xyz * 2.0 - 1.0) * delta.a;
 
         float deltaf = pyth(delta.xyz * u_speed);
         color *= step(upper, deltaf) * (1.0 - step(lower, deltaf));
         return;
     }
 
-    vec4 delta = texture(uData, data.zyx) * 2.0 - 1.0;
+    vec4 delta = texture(uData, data.zyx);
+    delta.xyz = (delta.xyz * 2.0 - 1.0) * delta.a;
     color = data.xyz + (delta.xyz * u_speed);
 
     float moved = pyth(delta.xyz * u_speed);
