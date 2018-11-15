@@ -1,6 +1,6 @@
 #version 300 es
 
-precision mediump float;
+precision highp float;
 in vec3 a_position;
 in vec3 a_color;
 in vec2 a_texture;
