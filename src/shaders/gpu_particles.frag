@@ -2,7 +2,7 @@
 
 precision highp float;
 
-in vec4 color;
+in vec3 color;
 in float invalid;
 in float transparency;
 out vec4 o_color;
@@ -12,5 +12,5 @@ void main() {
     //o_color = vec4(0.98, 0.12, 0.22, 1.0);
     if(invalid != 0.0)
         discard;
-    o_color = vec4(color.rgb, transparency * 0.5);
+    o_color = vec4(color, transparency * 0.5);
 }
