@@ -19,7 +19,7 @@ vec3 translate() {
         return vec3(v_texture.x, v_texture.y, u_progress);
     }
     else if(u_up.x > 0.5) {
-        return vec3(u_progress, -v_texture.y, v_texture.x);
+        return vec3(u_progress, v_texture.y, v_texture.x);
     } else {
         return vec3(v_texture.x, u_progress, v_texture.y);
     }
