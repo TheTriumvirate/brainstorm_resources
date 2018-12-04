@@ -11,21 +11,21 @@ uniform sampler3D uOther;
 uniform float u_size;
 uniform int u_layer;
 
-out vec3 color;
+out vec4 color;
 out float invalid;
 out float transparency;
 
-const int STREAMLINES = 4;
+const int STREAMLINES = 16;
 
 void main() {
     int selected = (gl_VertexID / int(u_size * u_size)) % 2;
     int offset = gl_VertexID / int(u_size * u_size);
     int layer = (u_layer - offset + STREAMLINES) % STREAMLINES;
-    vec3 pos = vec3(0.0);
+    vec4 pos = vec4(0.0);
     if(selected == 0) {
-        pos = texelFetch(uSampler, ivec3(ivec2(v_texpos * u_size), layer), 0).xyz;
+        pos = texelFetch(uSampler, ivec3(ivec2(v_texpos * u_size), layer), 0);
     } else {
-        pos = texelFetch(uOther, ivec3(ivec2(v_texpos * u_size), layer), 0).xyz;
+        pos = texelFetch(uOther, ivec3(ivec2(v_texpos * u_size), layer), 0);
     }
 
     color = pos;
@@ -38,10 +38,10 @@ void main() {
     //color = color / length(color);
 
     invalid = 0.0;
-    if(pos == vec3(0.0, 0.0, 0.0))
+    if(pos.xyz == vec3(0.0, 0.0, 0.0))
         invalid = 1.0;
     //vec3 color = vec3(color.x, color.y, 1.0 - color.z);
-    gl_Position = MVP * vec4(pos - 0.5, 1.0);
+    gl_Position = MVP * vec4(pos.xyz - 0.5, 1.0);
     gl_PointSize = 4.0 / length(gl_Position);
     transparency = 1.0 - float(offset) / float(STREAMLINES);
 }
