@@ -12,5 +12,5 @@ void main() {
     //o_color = vec4(0.98, 0.12, 0.22, 1.0);
     if(invalid != 0.0)
         discard;
-    o_color = vec4(color, transparency * 0.5);
+    o_color = vec4(color, transparency * 0.2);
 }
