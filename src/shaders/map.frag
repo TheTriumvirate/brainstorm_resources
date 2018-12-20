@@ -25,11 +25,13 @@ vec3 translate() {
     }
 }
 
+const vec3 darkColor = vec3(28.0/255.0, 29.0/255.0, 28.0/255.0);
+
 void main(void) {
     vec3 tex_pos = translate();
     vec4 c = texture(uSampler, tex_pos);
     
-    color = vec4(c.rgb * c.a, 1.0);
+    color = vec4(c.rgb * c.a + darkColor * (1.0 - c.a), 1.0);
 
     vec2 len = vec2(length(v_texture.x - u_test.x), length(v_texture.y - u_test.y));
     if((len.x < 0.005 || len.y < 0.005) && len.x < 0.05 && len.y < 0.05) {
