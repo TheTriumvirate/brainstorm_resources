@@ -6,6 +6,3 @@ publish = false
 edition = "2018"
 
 [dependencies]
-
-[profile.dev]
-codegen-units = 5
