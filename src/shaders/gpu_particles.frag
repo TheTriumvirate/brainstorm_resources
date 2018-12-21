@@ -1,6 +1,7 @@
 #version 300 es
 
 precision highp float;
+uniform float u_transparency;
 
 in vec3 color;
 in float invalid;
@@ -14,5 +15,5 @@ void main() {
     //o_color = vec4(0.98, 0.12, 0.22, 1.0);
     if(invalid != 0.0)
         discard;
-    o_color = vec4(color, transparency * 0.2 * u_q);
+    o_color = vec4(color, transparency * u_transparency * u_q);
 }
